@@ -40,9 +40,9 @@ def predict_with_model(model, scaler, label_encoders, user_input):
     return predicted_class, probabilities
 
 # **User Input**
-    st.subheader("🔹 User Input")
+st.subheader("🔹 User Input")
     
-    col1, col2 = st.columns(2)
+col1, col2 = st.columns(2)
     
 with col1:
     gender = st.selectbox("Gender", ["Male", "Female"])
