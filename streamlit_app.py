@@ -42,8 +42,8 @@ def predict_with_model(model, scaler, label_encoders, user_input):
 
 gender = st.selectbox("Gender", ["Male", "Female"])
 age = st.slider("Age", 0, 100, 25)
-height = st.number_input("Height (m)", 1.0, 2.5, 1.7)
-weight = st.number_input("Weight (kg)", 30.0, 200.0, 70.0)
+height = st.slider("Height (m)", 1.0, 2.5, 1.7)
+weight = st.slider("Weight (kg)", 30.0, 200.0, 70.0)
 family_history = st.selectbox("Family History of Overweight", ["yes", "no"])
 favc = st.selectbox("Frequent Consumption of High-Calorie Food", ["yes", "no"])
 fcvc = st.slider("Vegetable Consumption Frequency", 1.0, 3.0, 2.0)
