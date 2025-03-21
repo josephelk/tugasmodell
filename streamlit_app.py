@@ -55,15 +55,15 @@ with col1:
     ncp = st.slider("Number of Meals per Day", 1.0, 4.0, 3.0)
 
  with col2:
-    caec = st.selectbox("Consumption of Food Between Meals", ["no", "Sometimes", "Frequently", "Always"])
-    smoke = st.selectbox("Do you smoke?", ["yes", "no"])
-    ch2o = st.slider("Water Consumption (liters per day)", 1.0, 3.0, 2.0)
-    scc = st.selectbox("Calories Monitoring?", ["yes", "no"])
-    faf = st.slider("Physical Activity Frequency", 0.0, 3.0, 1.0)
-    tue = st.slider("Time Using Technology (hours)", 0.0, 2.0, 1.0)
-    calc = st.selectbox("Alcohol Consumption", ["no", "Sometimes", "Frequently", "Always"])
-    mtrans = st.selectbox("Mode of Transportation", ["Automobile", "Motorbike", "Bike", "Public_Transportation", "Walking"])
-
+     caec = st.selectbox("Consumption of Food Between Meals", ["no", "Sometimes", "Frequently", "Always"])
+     smoke = st.selectbox("Do you smoke?", ["yes", "no"])
+     ch2o = st.slider("Water Consumption (liters per day)", 1.0, 3.0, 2.0)
+     scc = st.selectbox("Calories Monitoring?", ["yes", "no"])
+     faf = st.slider("Physical Activity Frequency", 0.0, 3.0, 1.0)
+     tue = st.slider("Time Using Technology (hours)", 0.0, 2.0, 1.0)
+     calc = st.selectbox("Alcohol Consumption", ["no", "Sometimes", "Frequently", "Always"])
+     mtrans = st.selectbox("Mode of Transportation", ["Automobile", "Motorbike", "Bike", "Public_Transportation", "Walking"])
+     
 # **Tampilkan input pengguna dalam tabel**
 user_data = pd.DataFrame([[gender, age, height, weight, family_history, favc, fcvc, ncp, caec, smoke, ch2o, scc, faf, tue, calc, mtrans]],
                             columns=["Gender", "Age", "Height", "Weight", "family_history_with_overweight", "FAVC", "FCVC", "NCP", "CAEC", "SMOKE", "CH2O", "SCC", "FAF", "TUE", "CALC", "MTRANS"])
