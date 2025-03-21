@@ -19,10 +19,6 @@ def predict_with_model(model, scaler, label_encoders, user_input):
     user_input[4] = label_encoders["family_history_with_overweight"].transform([user_input[4]])[0]
     user_input[5] = label_encoders["FAVC"].transform([user_input[5]])[0]
     user_input[8] = label_encoders["CAEC"].transform([user_input[8]])[0]
-    user_input[9] = label_encoders["SMOKE"].transform([user_input[9]])[0]
-    user_input[11] = label_encoders["SCC"].transform([user_input[11]])[0]
-    user_input[14] = label_encoders["CALC"].transform([user_input[14]])[0]
-    user_input[15] = label_encoders["MTRANS"].transform([user_input[15]])[0]
 
     # Normalisasi input numerik
     numerical_indices = [1, 2, 3, 6, 7, 10, 12, 13]
@@ -49,15 +45,6 @@ favc = st.selectbox("Frequent Consumption of High-Calorie Food", ["yes", "no"])
 fcvc = st.slider("Vegetable Consumption Frequency", 1.0, 3.0, 2.0)
 ncp = st.slider("Number of Meals per Day", 1.0, 4.0, 3.0)
 
-caec = st.selectbox("Consumption of Food Between Meals", ["no", "Sometimes", "Frequently", "Always"])
-smoke = st.selectbox("Do you smoke?", ["yes", "no"])
-ch2o = st.slider("Water Consumption (liters per day)", 1.0, 3.0, 2.0)
-scc = st.selectbox("Calories Monitoring?", ["yes", "no"])
-faf = st.slider("Physical Activity Frequency", 0.0, 3.0, 1.0)
-tue = st.slider("Time Using Technology (hours)", 0.0, 2.0, 1.0)
-calc = st.selectbox("Alcohol Consumption", ["no", "Sometimes", "Frequently", "Always"])
-mtrans = st.selectbox("Mode of Transportation", ["Automobile", "Motorbike", "Bike", "Public_Transportation", "Walking"])
-     
 # **Tampilkan input pengguna dalam tabel**
 user_data = pd.DataFrame([[gender, age, height, weight, family_history, favc, fcvc, ncp, caec, smoke, ch2o, scc, faf, tue, calc, mtrans]],
                             columns=["Gender", "Age", "Height", "Weight", "family_history_with_overweight", "FAVC", "FCVC", "NCP", "CAEC", "SMOKE", "CH2O", "SCC", "FAF", "TUE", "CALC", "MTRANS"])
