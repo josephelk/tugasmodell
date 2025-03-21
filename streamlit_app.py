@@ -1,5 +1,9 @@
 import streamlit as st
+import pandas as pd
+import numpy as np
 
-st.title('🎈 App Name')
+st.title("Machine Learning App")
+st.info("This app will predict your obesity level!")
 
-st.write('Hello world!')
+dff = pd.read_csv("ObesityDataSet_raw_and_data_sinthetic.csv") 
+df = pd.DataFrame(dff)
