@@ -1,13 +1,11 @@
-# 📦 Streamlit App Starter Kit 
-```
-⬆️ (Replace above with your app's name)
-```
+# Tugas Model Deployment Obesity
 
-Description of the app ...
+Obesity Classification using ML
+
 
 ## Demo App
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://app-starter-kit.streamlit.app/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://tugasmodell.streamlit.app/)
 
 ## GitHub Codespaces
 
