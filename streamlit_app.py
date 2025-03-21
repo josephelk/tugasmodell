@@ -44,29 +44,32 @@ def predict_with_model(model, scaler, label_encoders, user_input):
     
     col1, col2 = st.columns(2)
     
-    with col1:
-        gender = st.selectbox("Gender", ["Male", "Female"])
-        age = st.slider("Age", 0, 100, 25)
-        height = st.number_input("Height (m)", 1.0, 2.5, 1.7)
-        weight = st.number_input("Weight (kg)", 30.0, 200.0, 70.0)
-        family_history = st.selectbox("Family History of Overweight", ["yes", "no"])
-        favc = st.selectbox("Frequent Consumption of High-Calorie Food", ["yes", "no"])
-        fcvc = st.slider("Vegetable Consumption Frequency", 1.0, 3.0, 2.0)
-        ncp = st.slider("Number of Meals per Day", 1.0, 4.0, 3.0)
+with col1:
+    gender = st.selectbox("Gender", ["Male", "Female"])
+    age = st.slider("Age", 0, 100, 25)
+    height = st.number_input("Height (m)", 1.0, 2.5, 1.7)
+    weight = st.number_input("Weight (kg)", 30.0, 200.0, 70.0)
+    family_history = st.selectbox("Family History of Overweight", ["yes", "no"])
+    favc = st.selectbox("Frequent Consumption of High-Calorie Food", ["yes", "no"])
+    fcvc = st.slider("Vegetable Consumption Frequency", 1.0, 3.0, 2.0)
+    ncp = st.slider("Number of Meals per Day", 1.0, 4.0, 3.0)
 
-    with col2:
-        caec = st.selectbox("Consumption of Food Between Meals", ["no", "Sometimes", "Frequently", "Always"])
-        smoke = st.selectbox("Do you smoke?", ["yes", "no"])
-        ch2o = st.slider("Water Consumption (liters per day)", 1.0, 3.0, 2.0)
-        scc = st.selectbox("Calories Monitoring?", ["yes", "no"])
-        faf = st.slider("Physical Activity Frequency", 0.0, 3.0, 1.0)
-        tue = st.slider("Time Using Technology (hours)", 0.0, 2.0, 1.0)
-        calc = st.selectbox("Alcohol Consumption", ["no", "Sometimes", "Frequently", "Always"])
-        mtrans = st.selectbox("Mode of Transportation", ["Automobile", "Motorbike", "Bike", "Public_Transportation", "Walking"])
+ with col2:
+    caec = st.selectbox("Consumption of Food Between Meals", ["no", "Sometimes", "Frequently", "Always"])
+    smoke = st.selectbox("Do you smoke?", ["yes", "no"])
+    ch2o = st.slider("Water Consumption (liters per day)", 1.0, 3.0, 2.0)
+    scc = st.selectbox("Calories Monitoring?", ["yes", "no"])
+    faf = st.slider("Physical Activity Frequency", 0.0, 3.0, 1.0)
+    tue = st.slider("Time Using Technology (hours)", 0.0, 2.0, 1.0)
+    calc = st.selectbox("Alcohol Consumption", ["no", "Sometimes", "Frequently", "Always"])
+    mtrans = st.selectbox("Mode of Transportation", ["Automobile", "Motorbike", "Bike", "Public_Transportation", "Walking"])
 
-    # **Tampilkan input pengguna dalam tabel**
-    user_data = pd.DataFrame([[gender, age, height, weight, family_history, favc, fcvc, ncp, caec, smoke, ch2o, scc, faf, tue, calc, mtrans]],
-                             columns=["Gender", "Age", "Height", "Weight", "family_history_with_overweight", "FAVC", "FCVC", "NCP", "CAEC", "SMOKE", "CH2O", "SCC", "FAF", "TUE", "CALC", "MTRANS"])
+# **Tampilkan input pengguna dalam tabel**
+user_data = pd.DataFrame([[gender, age, height, weight, family_history, favc, fcvc, ncp, caec, smoke, ch2o, scc, faf, tue, calc, mtrans]],
+                            columns=["Gender", "Age", "Height", "Weight", "family_history_with_overweight", "FAVC", "FCVC", "NCP", "CAEC", "SMOKE", "CH2O", "SCC", "FAF", "TUE", "CALC", "MTRANS"])
     
-    st.subheader("📝 Data input by user")
-    st.dataframe(user_data)
+st.subheader("📝 Data input by user")
+st.dataframe(user_data)
+
+if __name__ == "__main__":
+    main()
