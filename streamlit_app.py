@@ -65,5 +65,11 @@ user_data = pd.DataFrame([[gender, age, height, weight, family_history, favc, fc
 st.subheader("📝 Data input by user")
 st.dataframe(user_data)
 
+# **Tampilkan Probabilitas Klasifikasi**
+prob_df = pd.DataFrame(probabilities, columns=label_encoders["NObeyesdad"].classes_)
+    
+st.subheader("🎯 Obesity Prediction")
+st.dataframe(prob_df)
+
 if __name__ == "__main__":
     main()
