@@ -7,12 +7,6 @@ model = joblib.load('trained_modelll.pkl')
 loaded_encoder = joblib.load('encodingg.pkl')
 loaded_scaler = joblib.load('scalingg.pkl')
 
-def encode(df):
-  for column in df.columns:
-    if df[column].dtype == "object":
-      df[column] = loaded_encoder.fit_transform(df[column])
-  return df
-
 def normalize(df):
   df = loaded_scaler.transform(df)
   return df
