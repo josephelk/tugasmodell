@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import joblib
 
 model = joblib.load('trained_modelll.pkl')
 loaded_encoder = joblib.load('encodingg.pkl')
