@@ -2,4 +2,4 @@ streamlit
 numpy
 pandas
 scikit-learn
-from encoder import OneHotEncoderPickle
+OneHotEncoderPickle
