@@ -7,6 +7,17 @@ model = joblib.load('trained_modelll.pkl')
 loaded_encoder = joblib.load('encodingg.pkl')
 loaded_scaler = joblib.load('scalingg.pkl')
 
+def input_to_df(input):
+  data = [input]
+  df = pd.DataFrame(data, columns = ['Gender', 'Age', 'Height', 'Weight', 'family_history_with_overweight', 'FAVC', 'FCVC', 'NCP', 'CAEC', 'SMOKE', 'CH2O', 'SCC', 'FAF', 'TUE', 'CALC', 'MTRANS'])
+  return df
+
+def encode(df):
+  for column in df.columns:
+    if df[column].dtype == "object":
+      df[column] = loaded_encoder.fit_transform(df[column])
+  return df
+
 def normalize(df):
   df = loaded_scaler.transform(df)
   return df
