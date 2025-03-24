@@ -15,10 +15,14 @@ def input_to_df(input):
 def encode(df):
     for column in df.columns:
         if df[column].dtype == "object":
-            if column in loaded_encoder.categories_:
-                df[column] = loaded_encoder.transform(df[[column]])  # Transform hanya kategori yang dikenal
+            # Pastikan kolom sudah dikenali encoder
+            if hasattr(loaded_encoder, 'classes_'):  # LabelEncoder
+                df[column] = df[column].apply(lambda x: x if x in loaded_encoder.classes_ else np.nan)
+                df[column] = loaded_encoder.transform(df[column])
+            elif hasattr(loaded_encoder, 'categories_'):  # OneHotEncoder
+                df[column] = loaded_encoder.transform(df[[column]])
             else:
-                df[column] = np.nan  # Hindari error dengan mengganti kategori tak dikenal
+                st.error("Encoder tidak dikenali!")
     return df
 
 
