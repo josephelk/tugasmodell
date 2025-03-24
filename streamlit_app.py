@@ -7,6 +7,20 @@ model = joblib.load('trained_modelll.pkl')
 loaded_encoder = joblib.load('encoder.pkl')
 loaded_scaler = joblib.load('scalingg.pkl')
 
+# Label encoding
+label_encoders = {}
+for col in ["Gender", "family_history_with_overweight", "FAVC", "CAEC"]:
+    le = LabelEncoder()
+    data[col] = le.fit_transform(data[col])
+    label_encoders[col] = le
+    
+X = data.drop("Obesity", axis=1)
+y = LabelEncoder().fit_transform(data["Obesity"])
+    
+
+    
+    return model, label_encoders
+
 def input_to_df(input):
   data = [input]
   df = pd.DataFrame(data, columns = ['Gender', 'Age', 'Height', 'Weight', 'family_history_with_overweight', 'FAVC', 'FCVC', 'NCP', 'CAEC', 'SMOKE', 'CH2O', 'SCC', 'FAF', 'TUE', 'CALC', 'MTRANS'])
