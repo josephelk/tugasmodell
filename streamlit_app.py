@@ -33,7 +33,7 @@ def main():
   # Raw Data
   with st.expander('**Data**'):
     st.write('This is a raw data')
-    df = pd.read_csv('https://raw.githubusercontent.com/JeffreyJuinior/dp-machinelearning/refs/heads/master/ObesityDataSet_raw_and_data_sinthetic.csv')
+    df = pd.read_csv('ObesityDataSet_raw_and_data_sinthetic.csv')
     df
     st.write('**X**')
     X = df.drop('NObeyesdad',axis=1)
