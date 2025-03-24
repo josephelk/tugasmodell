@@ -7,19 +7,8 @@ model = joblib.load('trained_modelll.pkl')
 loaded_encoder = joblib.load('encoder.pkl')
 loaded_scaler = joblib.load('scalingg.pkl')
 
-# Label encoding
-label_encoders = {}
-for col in ["Gender", "family_history_with_overweight", "FAVC", "CAEC"]:
-    le = LabelEncoder()
-    data[col] = le.fit_transform(data[col])
-    label_encoders[col] = le
-    
-X = data.drop("Obesity", axis=1)
-y = LabelEncoder().fit_transform(data["Obesity"])
-    
+# Label
 
-    
-    return model, label_encoders
 
 def input_to_df(input):
   data = [input]
@@ -27,18 +16,10 @@ def input_to_df(input):
   return df
 
 def encode(df):
-    for column in df.columns:
-        if df[column].dtype == "object":
-            if hasattr(loaded_encoder, 'classes_'):  # LabelEncoder
-                df[column].fillna('Unknown', inplace=True)  # Gantilah NaN
-                df[column] = df[column].apply(lambda x: x if x in loaded_encoder.classes_ else 'Unknown')
-                df[column] = loaded_encoder.transform(df[column])
-            elif hasattr(loaded_encoder, 'categories_'):  # OneHotEncoder
-                df[column].fillna('Unknown', inplace=True)  # Gantilah NaN
-                df[column] = loaded_encoder.transform(df[[column]])
-            else:
-                st.error("Encoder tidak dikenali!")
-    return df
+  for column in df.columns:
+    if df[column].dtype == "object":
+      df[column] = loaded_encoder.fit_transform(df[column])
+  return df
 
 
 
