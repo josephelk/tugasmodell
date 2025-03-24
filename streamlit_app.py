@@ -1,14 +1,10 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
 import joblib
+import pandas as pd
 
 model = joblib.load('trained_modelll.pkl')
 loaded_encoder = joblib.load('encoder.pkl')
-loaded_scaler = joblib.load('scalingg.pkl')
-
-# Label
-
+loaded_scaler = joblib.load('scaler.pkl')
 
 def input_to_df(input):
   data = [input]
@@ -20,8 +16,6 @@ def encode(df):
     if df[column].dtype == "object":
       df[column] = loaded_encoder.fit_transform(df[column])
   return df
-
-
 
 def normalize(df):
   df = loaded_scaler.transform(df)
@@ -39,7 +33,7 @@ def main():
   # Raw Data
   with st.expander('**Data**'):
     st.write('This is a raw data')
-    df = pd.read_csv('ObesityDataSet_raw_and_data_sinthetic.csv')
+    df = pd.read_csv('https://raw.githubusercontent.com/JeffreyJuinior/dp-machinelearning/refs/heads/master/ObesityDataSet_raw_and_data_sinthetic.csv')
     df
     st.write('**X**')
     X = df.drop('NObeyesdad',axis=1)
@@ -72,14 +66,6 @@ def main():
   MTRANS = st.selectbox('MTRANS', ('Public_Transportation', 'Automobile', 'Walking', 'Motorbike', 'Bike'))
 
   # Input Data for Program
-  def input_to_df(user_input):
-    columns = ['Gender', 'Age', 'Height', 'Weight', 'family_history_with_overweight', 
-               'FAVC', 'FCVC', 'NCP', 'CAEC', 'SMOKE', 'CH2O', 'SCC', 
-               'FAF', 'TUE', 'CALC', 'MTRANS']
-    
-    df = pd.DataFrame([user_input], columns=columns)
-    return df
-
   user_input = [Gender, Age, Height, Weight, family_history_with_overweight, FAVC, FCVC, NCP, CAEC, SMOKE, CH2O, SCC, FAF, TUE, CALC, MTRANS]
   df = input_to_df(user_input)
 
