@@ -15,7 +15,7 @@ def input_to_df(input):
 def encode(df):
   for column in df.columns:
     if df[column].dtype == "object":
-      df[column] = loaded_encoder.fit_transform(df[column])
+      df[column] = loaded_encoder.transform(df[column])
   return df
 
 def normalize(df):
