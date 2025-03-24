@@ -3,7 +3,7 @@ import joblib
 import pandas as pd
 
 model = joblib.load('trained_modelll.pkl')
-loaded_encoder = joblib.load('encoder.pkl')
+loaded_encoder = DataEncoder.load("encoder.pkl")
 loaded_scaler = joblib.load('scaler.pkl')
 
 def input_to_df(input):
@@ -12,9 +12,7 @@ def input_to_df(input):
   return df
 
 def encode(df):
-  for column in df.columns:
-    if df[column].dtype == "object":
-      df[column] = loaded_encoder.fit_transform(df[column])
+  df = loaded_encoder.transform(df)
   return df
 
 def normalize(df):
