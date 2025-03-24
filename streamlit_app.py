@@ -72,8 +72,8 @@ def main():
                'FAVC', 'FCVC', 'NCP', 'CAEC', 'SMOKE', 'CH2O', 'SCC', 
                'FAF', 'TUE', 'CALC', 'MTRANS']
     
-    # df = pd.DataFrame([user_input], columns=columns)
-    # return df
+    df = pd.DataFrame([user_input], columns=columns)
+    return df
 
   user_input = [Gender, Age, Height, Weight, family_history_with_overweight, FAVC, FCVC, NCP, CAEC, SMOKE, CH2O, SCC, FAF, TUE, CALC, MTRANS]
   df = input_to_df(user_input)
