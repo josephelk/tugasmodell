@@ -13,10 +13,14 @@ def input_to_df(input):
   return df
 
 def encode(df):
-  for column in df.columns:
-    if df[column].dtype == "object":
-      df[column] = loaded_encoder.transform(df[column])
-  return df
+    for column in df.columns:
+        if df[column].dtype == "object":
+            if column in loaded_encoder.categories_:
+                df[column] = loaded_encoder.transform(df[[column]])  # Transform hanya kategori yang dikenal
+            else:
+                df[column] = np.nan  # Hindari error dengan mengganti kategori tak dikenal
+    return df
+
 
 def normalize(df):
   df = loaded_scaler.transform(df)
